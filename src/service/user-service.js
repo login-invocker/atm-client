@@ -52,9 +52,32 @@ const listUser = async () => {
   
 }
 
+const upDateUser = async (user) => {
+    const pinString = user.pin.toString()
+    const dataReq = {
+        "id": user.id,
+        "fullName": user.fullName,
+        "email": user.email,
+        "roles": user.roles,
+        "password": user.password,
+        "pin": pinString
+        }
 
+        console.log(dataReq)
+        try{
+            const responseData = await axios.put(`${config.API_URL}/api/admin/user`, dataReq);
+            console.log(responseData)
+            if(responseData.status === 200){
+                return true
+            }
+        }catch{
+            return false
+        }
+          
+}
 module.exports = {
     register,
     login,
-    listUser
+    listUser,
+    upDateUser
 }

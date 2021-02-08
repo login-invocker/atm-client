@@ -55,11 +55,12 @@ const ManagerUser = () => {
         for (let i = 0; i < dataRes.length; i++) {
             dataMap.push({
               key: i.toString(),
+              id: dataRes[i]['id'],
               email: dataRes[i]['email'],
               fullName: dataRes[i]['fullName'] || "Chưa cập nhập",
               password: dataRes[i]['password'],
               phoneNumber: dataRes[i]['phoneNumber'] || "Chưa cập nhập",
-              pin: dataRes[i]['pin'] || "Chưa cập nhập",
+              pin: dataRes[i]['pin'],
               roles: dataRes[i]['roles'] || "Chưa cập nhập",
             });
           }
@@ -69,7 +70,6 @@ const ManagerUser = () => {
           type: "success",
           message: "Lấy dữ liệu thành công!"
         })
-        console.log(data)
       }
       else{
         Notification({
@@ -85,6 +85,7 @@ const ManagerUser = () => {
 
   const edit = (record) => {
     form.setFieldsValue({
+        id: '',
       email: '',
       fullName: '',
       password: '',
@@ -108,23 +109,45 @@ const ManagerUser = () => {
         
       if (index > -1) {
         const item = newData[index];
+        
         newData.splice(index, 1, { ...item, ...row });
         setData(newData);
         setEditingKey('');
+        try{
+            const isUpdate = await userSevice.upDateUser(newData[index]);
+            if(isUpdate)
+            Notification({
+                type: "success",
+                message: "Cập nhật thông tin thành công!"
+            })
+            else
+            Notification({
+                type: "error",
+                message: "Thử lại sau!"
+            })
+        }catch{
+            Notification({
+                type: "error",
+                message: "Thử lại sau!"
+            })
+    }
       } else {
         newData.push(row);
         setData(newData);
         setEditingKey('');
       }
-      
-      const dataRes = await userSevice.listUser();
-
     } catch (errInfo) {
       console.log('Validate Failed:', errInfo);
     }
   };
 
   const columns = [
+    {
+        title: 'id User',
+        dataIndex: 'id',
+        width: '5%',
+        editable: false,
+      },
     {
       title: 'phone number',
       dataIndex: 'phoneNumber',
@@ -140,7 +163,7 @@ const ManagerUser = () => {
     {
       title: 'email',
       dataIndex: 'email',
-      width: '20%',
+      width: '15%',
       editable: true,
     },
     {

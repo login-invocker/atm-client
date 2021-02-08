@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { Layout, Menu, Tooltip, Button  } from 'antd';
 import RouteConfigExample from './config/router'
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { UploadOutlined, UserOutlined, VideoCameraOutlined, ExportOutlined, UserSwitchOutlined, InboxOutlined } from '@ant-design/icons';
 import './App.css'
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -37,10 +37,19 @@ const App = () =>{
       <Link to="/register">Register</Link>
       </Menu.Item>
       <Menu.Item key="3" icon={<UploadOutlined />}>
-        nav 3
+      <Link to="/recharge">Recharge</Link>
       </Menu.Item>
-      <Menu.Item key="4" icon={<UserOutlined />}>
-        nav 4
+      <Menu.Item key="4" icon={<ExportOutlined />}>
+      <Link to="/withdrawal">Withdrawal</Link>
+      </Menu.Item>
+      <Menu.Item key="5" icon={<UserSwitchOutlined />}>
+      <Link to="/transfers">transfers</Link>
+      </Menu.Item>
+      <Menu.Item key="6" icon={<InboxOutlined />}>
+      <Link to="/balance-inquiry">Balance Inquiry</Link>
+      </Menu.Item>
+      <Menu.Item key="7" icon={<InboxOutlined />}>
+      <Link to="/manage-user">Manage User</Link>
       </Menu.Item>
     </Menu>
     

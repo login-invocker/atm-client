@@ -9,6 +9,12 @@ import './router.css'
 import RegisterPage from "../pages/register-page"
 import LoginPage from "../pages/login-page"
 import HomePage from "../pages/home-page"
+import RechargePage from "../pages/recharge-page"
+import Withdrawall from "../pages/withdrawal-page"
+import TransfersPage from "../pages/transfers-page"
+import BalanceInquiryPage from "../pages/balance-inquiry-page"
+import ManageUserPage from "../pages/admin/manage-user"
+
 // Some folks find value in a centralized route config.
 // A route config is just data. React is great at mapping
 // data into components, and <Route> is a component.
@@ -30,18 +36,24 @@ const routes = [
     component: HomePage
   },
   {
-    path: "/tacos",
-    component: Tacos,
-    routes: [
-      {
-        path: "/tacos/bus",
-        component: Bus
-      },
-      {
-        path: "/tacos/cart",
-        component: Cart
-      }
-    ]
+    path: "/recharge",
+    component: RechargePage
+  },
+  {
+    path: "/withdrawal",
+    component: Withdrawall
+  },
+  {
+    path: "/transfers",
+    component: TransfersPage
+  },
+  {
+    path: "/balance-inquiry",
+    component: BalanceInquiryPage
+  },
+  {
+    path: "/manage-user",
+    component: ManageUserPage
   }
 ];
 

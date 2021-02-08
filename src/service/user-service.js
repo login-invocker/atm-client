@@ -24,7 +24,13 @@ const login = async (user) => {
    try{
     const responseData = await axios.post(`${config.API_URL}/api/user/login`, userRequest);
     if(responseData.status === 200){
-        helper.setCookie("user", responseData.data, 7)
+        const userResponse = responseData.data
+
+        helper.setCookie("idUser", userResponse.id, 7)
+        helper.setCookie("emailUser", userResponse.email, 7)
+        helper.setCookie("pinUser", userResponse.pin, 7)
+        helper.setCookie("passwordUser", userResponse.password, 7)
+        helper.setCookie("roleUser", userResponse.roles, 7)
         return true
     }
 }catch{
@@ -32,7 +38,23 @@ const login = async (user) => {
 }
   
 }
+
+const listUser = async () => {
+   try{
+    const responseData = await axios.get(`${config.API_URL}/api/admin/user`);
+    if(responseData.status === 200){
+        const listUserResponse = responseData.data
+        return listUserResponse
+    }
+}catch{
+    return false
+}
+  
+}
+
+
 module.exports = {
     register,
-    login
+    login,
+    listUser
 }

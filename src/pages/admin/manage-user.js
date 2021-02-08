@@ -3,7 +3,7 @@ import "./manage-user.css"
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
 
 import Notification from "../../component/notification-component";
-const userSevice = require("../../service/user-service")
+import {listUser, upDateUser} from "../../service/user-service"
 
 
 
@@ -49,7 +49,7 @@ const ManagerUser = () => {
 
   useEffect(() => {
     const callApi = async () => {
-      const dataRes = await userSevice.listUser();
+      const dataRes = await listUser();
       let dataMap = []
       if(dataRes){
         for (let i = 0; i < dataRes.length; i++) {
@@ -114,7 +114,7 @@ const ManagerUser = () => {
         setData(newData);
         setEditingKey('');
         try{
-            const isUpdate = await userSevice.upDateUser(newData[index]);
+            const isUpdate = await upDateUser(newData[index]);
             if(isUpdate)
             Notification({
                 type: "success",

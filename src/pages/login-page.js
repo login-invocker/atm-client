@@ -4,7 +4,7 @@ import React from "react";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useHistory } from "react-router-dom";
 import Notification from "../component/notification-component";
-const  UserService = require('../service/user-service')
+import  {login} from '../service/user-service'
 const layout = {
   labelCol: {
     span: 8,
@@ -32,7 +32,7 @@ const tailLayout = {
 const LoginPage = () => {
     let history = useHistory();
     const onFinish = async (values) => {
-        const isLogin = await UserService.login(values)
+        const isLogin = await login(values)
         if(isLogin) {
              Notification({
                 type: "success",

@@ -3,7 +3,7 @@ import React from "react";
 import { Form, Input, Button } from 'antd';
 import { useHistory } from "react-router-dom";
 import Notification from "../component/notification-component";
-const transactionService = require('../service/transaction-service')
+import {transferee} from'../service/transaction-service'
 
 const layout = {
   labelCol: {
@@ -24,7 +24,7 @@ const TransfersPage = () => {
     let history = useHistory();
     const onFinish = async (values) => {
 
-      const isTransferee = await transactionService.transferee(values)
+      const isTransferee = await transferee(values)
         if(isTransferee) {
              Notification({
                 type: "success",

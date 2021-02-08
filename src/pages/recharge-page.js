@@ -3,7 +3,7 @@ import React from "react";
 import { Form, Input, Button } from 'antd';
 import { useHistory } from "react-router-dom";
 import Notification from "../component/notification-component";
-const transactionService = require('../service/transaction-service')
+import {recharge} from '../service/transaction-service'
 
 const layout = {
   labelCol: {
@@ -33,7 +33,7 @@ const RechargePage = () => {
     let history = useHistory();
     const onFinish = async (values) => {
         
-        const isrecharge = await transactionService.recharge(values)
+        const isrecharge = await recharge(values)
         if(isrecharge) {
              Notification({
                 type: "success",

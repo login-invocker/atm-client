@@ -3,7 +3,7 @@ import React from "react";
 import { Form, Input, Button } from 'antd';
 import { useHistory } from "react-router-dom";
 import Notification from "../component/notification-component";
-const transactionService = require('../service/transaction-service')
+import {withdrawall} from '../service/transaction-service'
 
 const layout = {
   labelCol: {
@@ -24,7 +24,7 @@ const Withdrawall = () => {
     let history = useHistory();
     const onFinish = async (values) => {
 
-      const iswithdrawall = await transactionService.withdrawall(values)
+      const iswithdrawall = await withdrawall(values)
         if(iswithdrawall) {
              Notification({
                 type: "success",

@@ -4,8 +4,9 @@ import 'antd/dist/antd.css';
 
 import { Form, Input, InputNumber, Button, Select } from 'antd';
 import Notification from "./notification-component";
+import {register} from '../service/user-service'
+
 const { Option } = Select;
-const userService = require('../service/user-service')
 const layout = {
   labelCol: {
     span: 8,
@@ -34,7 +35,7 @@ const prefixSelector = (
 const FormRegister = () => {
   const onFinish = async (user) => {
     
-    const isRegister = await userService.register(user)
+    const isRegister = await register(user)
     if(isRegister){
      return Notification({
        type: "success",

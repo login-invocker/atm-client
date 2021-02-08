@@ -2,7 +2,7 @@ import {React, useEffect, useState} from "react";
 import 'antd/dist/antd.css';
 import Notification from "../component/notification-component";
 import {  Table  } from 'antd';
-const transactoinSevice = require( "../service/transaction-service")
+import {Balance} from "../service/transaction-service"
 const { Column, ColumnGroup } = Table;
 
 const BalancePage = () => {
@@ -10,14 +10,13 @@ const BalancePage = () => {
   const [transactions, setTransactions] = useState([])
   useEffect(() => {
     const callApi = async () => {
-      const dataRes = await transactoinSevice.Balance();
+      const dataRes = await Balance();
       if(dataRes){
         setTransactions(dataRes)
         Notification({
           type: "success",
           message: "Lấy dữ liệu thành công!"
         })
-        console.log(transactions)
       }
       else{
         Notification({

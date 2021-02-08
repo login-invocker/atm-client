@@ -1,9 +1,9 @@
 
 import React from "react";
-import transactionService from '../service/transaction-service'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { useHistory } from "react-router-dom";
 import Notification from "../component/notification-component";
+const transactionService = require('../service/transaction-service')
 
 const layout = {
   labelCol: {

@@ -1,7 +1,5 @@
 
 import React from "react";
-import UserService from '../service/user-service'
-import { Form, Input, Button, Checkbox } from 'antd';
 
 const HomePage = () => {
 

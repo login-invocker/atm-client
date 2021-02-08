@@ -107,11 +107,3 @@ function Tacos({ routes }) {
     </div>
   );
 }
-
-function Bus() {
-  return <h3>Bus</h3>;
-}
-
-function Cart() {
-  return <h3>Cart</h3>;
-}

@@ -1,10 +1,10 @@
 
 import React from "react";
-import UserService from '../service/user-service'
+
 import { Form, Input, Button, Checkbox } from 'antd';
 import { useHistory } from "react-router-dom";
 import Notification from "../component/notification-component";
-
+const  UserService = require('../service/user-service')
 const layout = {
   labelCol: {
     span: 8,
@@ -20,15 +20,15 @@ const tailLayout = {
   },
 };
 
-const Demo = () => {
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
+// const Demo = () => {
+//   const onFinish = (values) => {
+//     console.log('Success:', values);
+//   };
 
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-}
+//   const onFinishFailed = (errorInfo) => {
+//     console.log('Failed:', errorInfo);
+//   };
+// }
 const LoginPage = () => {
     let history = useHistory();
     const onFinish = async (values) => {

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import {register} from '../service/user-service'
+
 import { Form, Input, InputNumber, Button, Select } from 'antd';
 import Notification from "./notification-component";
 const { Option } = Select;
-
+const userService = require('../service/user-service')
 const layout = {
   labelCol: {
     span: 8,
@@ -34,7 +34,7 @@ const prefixSelector = (
 const FormRegister = () => {
   const onFinish = async (user) => {
     
-    const isRegister = await register(user)
+    const isRegister = await userService.register(user)
     if(isRegister){
      return Notification({
        type: "success",

@@ -1,8 +1,8 @@
 import {React, useEffect, useState} from "react";
 import 'antd/dist/antd.css';
 import Notification from "../component/notification-component";
-import {  Table, Tag, Space  } from 'antd';
-import transactoinSevice from "../service/transaction-service"
+import {  Table  } from 'antd';
+const transactoinSevice = require( "../service/transaction-service")
 const { Column, ColumnGroup } = Table;
 
 const BalancePage = () => {

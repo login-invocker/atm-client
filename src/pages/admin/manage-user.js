@@ -3,7 +3,7 @@ import "./manage-user.css"
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
 
 import Notification from "../../component/notification-component";
-import userSevice from "../../service/user-service"
+const userSevice = require("../../service/user-service")
 
 
 
